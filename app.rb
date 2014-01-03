@@ -1,4 +1,7 @@
 require 'bundler'
+require "sprockets"
+require "sprockets-sass"
+require "sass"
 Bundler.require
 
 class App < Sinatra::Base
@@ -10,6 +13,7 @@ class App < Sinatra::Base
 
   configure do
     sprockets.append_path File.join(root, 'assets', 'javascripts')
+    sprockets.append_path File.join(root, 'assets', 'stylesheets')
     sprockets.append_path File.dirname(HamlCoffeeAssets.helpers_path)
 
     Sprockets::Helpers.configure do |config|
